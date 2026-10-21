@@ -4,6 +4,7 @@
 #include "GameFramework/Actor.h"
 #include "HubGameInstance.h"
 #include "Data/HubBuildingData.h"
+#include "Data/HubBuildingType.h"
 #include "IntermissionManager.generated.h"
 
 UCLASS(Blueprintable)
@@ -27,13 +28,6 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "Intermission")
 	TObjectPtr<UHubGameInstance> GameInstanceRef;
-
-
-	// ---------- Building Data ----------
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Intermission|Buildings")
-	TArray<FHubBuildingData> BuildingData;
-
 
 	// ---------- Building Functions ----------
 
@@ -60,4 +54,19 @@ public:
 		EHubBuildingType BuildingType,
 		int32 NewLevel
 	);
+	
+	UFUNCTION(BlueprintCallable, Category = "Intermission|Preview")
+	void ShowBuildingPreview(EHubBuildingType BuildingType);
+
+	UFUNCTION(BlueprintCallable, Category = "Intermission|Preview")
+	void HideBuildingPreview();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Intermission|Preview")
+	void OnShowBuildingPreview(
+		EHubBuildingType BuildingType,
+		const FHubBuildingData& InBuildingData
+	);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Intermission|Preview")
+	void OnHideBuildingPreview();
 };

@@ -4,13 +4,12 @@
 #include "IntermissionManager.h"
 
 
-// Sets default values
 AIntermissionManager::AIntermissionManager()
 {
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-// Called when the game starts or when spawned
+
 void AIntermissionManager::BeginPlay()
 {
 	Super::BeginPlay();
@@ -19,52 +18,82 @@ void AIntermissionManager::BeginPlay()
 
 	if (!GameInstanceRef)
 	{
-		UE_LOG(LogTemp, Error, TEXT("IntermissionManager: Failed to get HubGameInstance."));
+		UE_LOG(
+			LogTemp,
+			Error,
+			TEXT("IntermissionManager: Failed to get HubGameInstance.")
+		);
+
 		return;
 	}
 
 	OnIntermissionReady();
 }
 
+
 bool AIntermissionManager::GetBuildingData(
 	EHubBuildingType BuildingType,
-	FHubBuildingData& OutBuildingData) const
-{
-	for (const FHubBuildingData& Data : BuildingData)
-	{
-		if (Data.BuildingType == BuildingType)
-		{
-			OutBuildingData = Data;
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
-bool AIntermissionManager::TryPurchaseBuilding(EHubBuildingType BuildingType)
+	FHubBuildingData& OutBuildingData
+) const
 {
 	if (!GameInstanceRef)
 	{
 		return false;
 	}
 
-	FHubBuildingData Data;
+	return GameInstanceRef->GetBuildingData(
+		BuildingType,
+		OutBuildingData
+	);
+}
 
-	if (!GetBuildingData(BuildingType, Data))
+
+bool AIntermissionManager::TryPurchaseBuilding(
+	EHubBuildingType BuildingType
+)
+{
+	if (!GameInstanceRef)
 	{
 		return false;
 	}
 
-	if (!GameInstanceRef->PurchaseBuilding(Data))
+	FHubBuildingData FoundData;
+
+	if (!GetBuildingData(BuildingType, FoundData))
 	{
 		return false;
 	}
 
-	const int32 NewLevel = GameInstanceRef->GetBuildingLevel(BuildingType);
+	if (!GameInstanceRef->PurchaseBuilding(FoundData))
+	{
+		return false;
+	}
+
+	const int32 NewLevel =
+		GameInstanceRef->GetBuildingLevel(BuildingType);
 
 	OnBuildingPurchased(BuildingType, NewLevel);
 
 	return true;
+}
+
+
+void AIntermissionManager::ShowBuildingPreview(
+	EHubBuildingType BuildingType
+)
+{
+	FHubBuildingData FoundData;
+
+	if (!GetBuildingData(BuildingType, FoundData))
+	{
+		return;
+	}
+
+	OnShowBuildingPreview(BuildingType, FoundData);
+}
+
+
+void AIntermissionManager::HideBuildingPreview()
+{
+	OnHideBuildingPreview();
 }

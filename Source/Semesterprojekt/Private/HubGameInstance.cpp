@@ -10,41 +10,64 @@ int32 UHubGameInstance::GetBuildingLevel(EHubBuildingType BuildingType) const
 	return 0;
 }
 
-int32 UHubGameInstance::GetBuildingCost(const FHubBuildingData& BuildingData) const
+int32 UHubGameInstance::GetBuildingCost(const FHubBuildingData& InBuildingData) const
 {
-	const int32 CurrentLevel = GetBuildingLevel(BuildingData.BuildingType);
+	const int32 CurrentLevel =
+		GetBuildingLevel(InBuildingData.BuildingType);
 
-	return BuildingData.BaseCost
-		+ (CurrentLevel * BuildingData.CostIncreasePerLevel);
+	return InBuildingData.BaseCost
+		+ (CurrentLevel * InBuildingData.CostIncreasePerLevel);
 }
 
-bool UHubGameInstance::CanPurchaseBuilding(const FHubBuildingData& BuildingData) const
-{
-	const int32 CurrentLevel = GetBuildingLevel(BuildingData.BuildingType);
 
-	if (CurrentLevel >= BuildingData.MaxLevel)
+bool UHubGameInstance::CanPurchaseBuilding(const FHubBuildingData& InBuildingData) const
+{
+	const int32 CurrentLevel =
+		GetBuildingLevel(InBuildingData.BuildingType);
+
+	if (CurrentLevel >= InBuildingData.MaxLevel)
 	{
 		return false;
 	}
 
-	const int32 Cost = GetBuildingCost(BuildingData);
+	const int32 Cost = GetBuildingCost(InBuildingData);
 
 	return TotalResources >= Cost;
 }
 
-bool UHubGameInstance::PurchaseBuilding(const FHubBuildingData& BuildingData)
+bool UHubGameInstance::PurchaseBuilding(const FHubBuildingData& InBuildingData)
 {
-	if (!CanPurchaseBuilding(BuildingData))
+	if (!CanPurchaseBuilding(InBuildingData))
 	{
 		return false;
 	}
 
-	const int32 Cost = GetBuildingCost(BuildingData);
-	const int32 CurrentLevel = GetBuildingLevel(BuildingData.BuildingType);
+	const int32 Cost = GetBuildingCost(InBuildingData);
+
+	const int32 CurrentLevel =
+		GetBuildingLevel(InBuildingData.BuildingType);
 
 	TotalResources -= Cost;
 
-	BuildingLevels.FindOrAdd(BuildingData.BuildingType) = CurrentLevel + 1;
+	BuildingLevels.FindOrAdd(InBuildingData.BuildingType)
+		= CurrentLevel + 1;
 
 	return true;
+}
+
+bool UHubGameInstance::GetBuildingData(
+	EHubBuildingType BuildingType,
+	FHubBuildingData& OutBuildingData
+) const
+{
+	for (const FHubBuildingData& Entry : BuildingData)
+	{
+		if (Entry.BuildingType == BuildingType)
+		{
+			OutBuildingData = Entry;
+			return true;
+		}
+	}
+
+	return false;
 }
