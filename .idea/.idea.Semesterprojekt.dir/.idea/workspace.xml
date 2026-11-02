@@ -4,7 +4,19 @@
     <projectFile>Semesterprojekt.uproject</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cabee2-89e4-455c-a6b6-425b5978ffa2" name="Changes" comment="" />
+    <list default="true" id="91cabee2-89e4-455c-a6b6-425b5978ffa2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Semesterprojekt/HUB/BPs/BP_HUB_Projectile.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Semesterprojekt/HUB/Dogo0_1.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Semesterprojekt/Input/IA_HUBFire.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Semesterprojekt/Private/HubWeaponComponent.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Semesterprojekt/Public/HubWeaponComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Semesterprojekt.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Semesterprojekt.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Semesterprojekt/Core/Level/LVL_Joel_Test.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Semesterprojekt/Core/Level/LVL_Joel_Test.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Semesterprojekt/Enemies/BP_Enemy_Test.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Semesterprojekt/Enemies/BP_Enemy_Test.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Semesterprojekt/HUB/BPs/BP_HUB_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Semesterprojekt/HUB/BPs/BP_HUB_Base.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Semesterprojekt/Input/IMC_HUB.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Semesterprojekt/Input/IMC_HUB.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Semesterprojekt/UI/WBP_Intermission.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Semesterprojekt/UI/WBP_Intermission.uasset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,9 +29,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/Semesterprojekt/Private/HubWeaponComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Semesterprojekt/Private/IntermissionManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Semesterprojekt/Public/Data/HubBuildingData.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Semesterprojekt/Public/Data/HubBuildingType.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Semesterprojekt/Public/HubWeaponComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Semesterprojekt/Public/IntermissionManager.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -47,7 +61,7 @@
     &quot;Uproject.Semesterprojekt.executor&quot;: &quot;Run&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/IntermissionLevel&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/HUB-Advanced&quot;,
     &quot;rider.unittesting.toolwindow.stripe.button.shown&quot;: &quot;true&quot;
   }
 }</component>
@@ -121,6 +135,14 @@
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Semesterprojekt.uproject" />
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Semesterprojekt.uproject" />
       <option name="AUTO_SELECT_PRIORITY" value="10010" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Uproject" factoryName="rider.uproject">
+      <option name="DEFAULT_PROJECT_PATH" value="" />
+      <option name="PROJECT_FILE_PATH" value="" />
+      <option name="AUTO_SELECT_PRIORITY" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
